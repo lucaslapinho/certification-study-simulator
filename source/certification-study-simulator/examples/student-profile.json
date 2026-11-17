@@ -1,0 +1,22 @@
+{
+  "record_type": "student_profile",
+  "schema_version": "1.0",
+  "student_id": "learner-demo",
+  "certification_id": "aws-cloud-practitioner",
+  "exam_code": "CLF-C02",
+  "exam_version": null,
+  "language": "pt-BR",
+  "timezone": "America/Sao_Paulo",
+  "target_date": "2026-12-14",
+  "weekly_minutes": 360,
+  "experience": "Perfil sintético: profissional de TI iniciando AWS.",
+  "self_confidence": {
+    "D1": 2,
+    "D2": 1,
+    "D3": 1,
+    "D4": 2
+  },
+  "constraints": [
+    "Sessões de até 60 minutos."
+  ]
+}

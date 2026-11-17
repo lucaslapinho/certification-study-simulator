@@ -1,0 +1,58 @@
+{
+  "record_type": "question",
+  "schema_version": "1.0",
+  "certification_id": "aws-cloud-practitioner",
+  "exam_code": "CLF-C02",
+  "exam_version": null,
+  "question_id": "CLF-OPEN-001",
+  "domain": "D2",
+  "subdomain": "Responsabilidade em EC2",
+  "objective": "2.1",
+  "question_type": "short-answer",
+  "response_format": "text",
+  "difficulty": "intermediate",
+  "stem": "Em uma instância EC2 convencional, explique quem atualiza o sistema operacional convidado e quem protege a infraestrutura física.",
+  "options": [],
+  "selection_count": null,
+  "correct_answers": [],
+  "explanation": "O cliente administra os patches do sistema operacional convidado. A AWS protege a infraestrutura física subjacente.",
+  "distractor_explanations": {},
+  "source_references": [
+    {
+      "source_id": "aws-shared",
+      "organization": "AWS",
+      "certification": "AWS Certified Cloud Practitioner",
+      "exam_code": "CLF-C02",
+      "exam_version": null,
+      "url": "https://aws.amazon.com/compliance/shared-responsibility-model/",
+      "accessed_on": "2026-11-16",
+      "supports": [
+        "2.1"
+      ],
+      "update_status": "checked_snapshot",
+      "limitations": []
+    }
+  ],
+  "scoring_policy": {
+    "method": "rubric",
+    "max_points": 2,
+    "public_criteria": "Até 2 pontos: 1 pela atribuição justificada da atualização do SO convidado; 1 pela atribuição justificada da proteção física. Avaliação estimativa.",
+    "rubric": [
+      {
+        "criterion_id": "guest-os",
+        "criterion": "Atribui ao cliente os patches do SO convidado.",
+        "points": 1
+      },
+      {
+        "criterion_id": "physical",
+        "criterion": "Atribui à AWS a proteção da infraestrutura física.",
+        "points": 1
+      }
+    ]
+  },
+  "review_status": "reviewed",
+  "review_notes": "Extensão pedagógica original; resposta aberta não é formato declarado para CLF-C02. Revisão documental pelo autor.",
+  "reviewed_on": "2026-11-16",
+  "origin": "ai_original_practice",
+  "content_revision": 1
+}

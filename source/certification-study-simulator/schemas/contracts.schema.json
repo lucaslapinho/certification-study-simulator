@@ -1,0 +1,1634 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Certification study simulator contracts 1.0",
+  "$defs": {
+    "source": {
+      "type": "object",
+      "properties": {
+        "source_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "organization": {
+          "type": "string",
+          "minLength": 1
+        },
+        "certification": {
+          "type": "string",
+          "minLength": 1
+        },
+        "exam_code": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "exam_version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://"
+        },
+        "accessed_on": {
+          "type": "string",
+          "format": "date"
+        },
+        "supports": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "update_status": {
+          "enum": [
+            "checked_snapshot",
+            "unavailable",
+            "outdated",
+            "unverified"
+          ]
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "source_id",
+        "organization",
+        "certification",
+        "exam_code",
+        "exam_version",
+        "url",
+        "accessed_on",
+        "supports",
+        "update_status",
+        "limitations"
+      ],
+      "additionalProperties": false
+    },
+    "domain": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "weight": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 100
+        },
+        "objectives": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "title": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "id",
+              "title"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "weight",
+        "objectives"
+      ],
+      "additionalProperties": false
+    },
+    "blueprint": {
+      "type": "object",
+      "properties": {
+        "record_type": {
+          "const": "blueprint"
+        },
+        "schema_version": {
+          "const": "1.0"
+        },
+        "certification_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "exam_code": {
+          "type": "string",
+          "minLength": 1
+        },
+        "exam_version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "organization": {
+          "type": "string",
+          "minLength": 1
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "blueprint_revision": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "effective_date": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+        "snapshot_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "status": {
+          "enum": [
+            "verified_snapshot",
+            "unavailable",
+            "retired",
+            "unverified"
+          ]
+        },
+        "domains": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/domain"
+          },
+          "minItems": 1
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/source"
+          },
+          "minItems": 1
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "record_type",
+        "schema_version",
+        "certification_id",
+        "exam_code",
+        "exam_version",
+        "organization",
+        "name",
+        "blueprint_revision",
+        "effective_date",
+        "snapshot_date",
+        "status",
+        "domains",
+        "sources",
+        "limitations"
+      ],
+      "additionalProperties": false
+    },
+    "rubric": {
+      "type": "object",
+      "properties": {
+        "criterion_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "criterion": {
+          "type": "string",
+          "minLength": 1
+        },
+        "points": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        }
+      },
+      "required": [
+        "criterion_id",
+        "criterion",
+        "points"
+      ],
+      "additionalProperties": false
+    },
+    "question": {
+      "type": "object",
+      "properties": {
+        "record_type": {
+          "const": "question"
+        },
+        "schema_version": {
+          "const": "1.0"
+        },
+        "certification_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "exam_code": {
+          "type": "string",
+          "minLength": 1
+        },
+        "exam_version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "question_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "domain": {
+          "type": "string",
+          "minLength": 1
+        },
+        "subdomain": {
+          "type": "string",
+          "minLength": 1
+        },
+        "objective": {
+          "type": "string",
+          "minLength": 1
+        },
+        "question_type": {
+          "enum": [
+            "single-choice",
+            "multiple-response",
+            "scenario-based",
+            "short-answer"
+          ]
+        },
+        "response_format": {
+          "enum": [
+            "single",
+            "multiple",
+            "text"
+          ]
+        },
+        "difficulty": {
+          "enum": [
+            "basic",
+            "intermediate",
+            "advanced"
+          ]
+        },
+        "stem": {
+          "type": "string",
+          "minLength": 1
+        },
+        "options": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Z]$"
+              },
+              "text": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "id",
+              "text"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 0
+        },
+        "selection_count": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "correct_answers": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "explanation": {
+          "type": "string",
+          "minLength": 1
+        },
+        "distractor_explanations": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "source_references": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/source"
+          },
+          "minItems": 1
+        },
+        "scoring_policy": {
+          "type": "object",
+          "properties": {
+            "method": {
+              "enum": [
+                "exact_match",
+                "rubric"
+              ]
+            },
+            "max_points": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "public_criteria": {
+              "type": "string",
+              "minLength": 1
+            },
+            "rubric": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/rubric"
+              },
+              "minItems": 0
+            }
+          },
+          "required": [
+            "method",
+            "max_points",
+            "public_criteria",
+            "rubric"
+          ],
+          "additionalProperties": false
+        },
+        "review_status": {
+          "enum": [
+            "draft",
+            "reviewed",
+            "ambiguous",
+            "contested",
+            "void"
+          ]
+        },
+        "review_notes": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reviewed_on": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+        "origin": {
+          "const": "ai_original_practice"
+        },
+        "content_revision": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": [
+        "record_type",
+        "schema_version",
+        "certification_id",
+        "exam_code",
+        "exam_version",
+        "question_id",
+        "domain",
+        "subdomain",
+        "objective",
+        "question_type",
+        "response_format",
+        "difficulty",
+        "stem",
+        "options",
+        "selection_count",
+        "correct_answers",
+        "explanation",
+        "distractor_explanations",
+        "source_references",
+        "scoring_policy",
+        "review_status",
+        "review_notes",
+        "reviewed_on",
+        "origin",
+        "content_revision"
+      ],
+      "additionalProperties": false
+    },
+    "question_bank": {
+      "type": "object",
+      "properties": {
+        "record_type": {
+          "const": "question_bank"
+        },
+        "schema_version": {
+          "const": "1.0"
+        },
+        "bank_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "questions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/question"
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "record_type",
+        "schema_version",
+        "bank_id",
+        "questions"
+      ],
+      "additionalProperties": false
+    },
+    "student_profile": {
+      "type": "object",
+      "properties": {
+        "record_type": {
+          "const": "student_profile"
+        },
+        "schema_version": {
+          "const": "1.0"
+        },
+        "student_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "certification_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "exam_code": {
+          "type": "string",
+          "minLength": 1
+        },
+        "exam_version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "language": {
+          "type": "string",
+          "minLength": 1
+        },
+        "timezone": {
+          "type": "string",
+          "minLength": 1
+        },
+        "target_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "weekly_minutes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10080
+        },
+        "experience": {
+          "type": "string",
+          "minLength": 1
+        },
+        "self_confidence": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4
+          }
+        },
+        "constraints": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "record_type",
+        "schema_version",
+        "student_id",
+        "certification_id",
+        "exam_code",
+        "exam_version",
+        "language",
+        "timezone",
+        "target_date",
+        "weekly_minutes",
+        "experience",
+        "self_confidence",
+        "constraints"
+      ],
+      "additionalProperties": false
+    },
+    "allocation": {
+      "type": "object",
+      "properties": {
+        "domain": {
+          "type": "string",
+          "minLength": 1
+        },
+        "minutes": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "domain",
+        "minutes"
+      ],
+      "additionalProperties": false
+    },
+    "week": {
+      "type": "object",
+      "properties": {
+        "start": {
+          "type": "string",
+          "format": "date"
+        },
+        "end": {
+          "type": "string",
+          "format": "date"
+        },
+        "available_minutes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "learn_minutes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "practice_minutes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "review_minutes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "by_domain": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/allocation"
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "start",
+        "end",
+        "available_minutes",
+        "learn_minutes",
+        "practice_minutes",
+        "review_minutes",
+        "by_domain"
+      ],
+      "additionalProperties": false
+    },
+    "study_plan": {
+      "type": "object",
+      "properties": {
+        "record_type": {
+          "const": "study_plan"
+        },
+        "schema_version": {
+          "const": "1.0"
+        },
+        "student_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "certification_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "exam_code": {
+          "type": "string",
+          "minLength": 1
+        },
+        "exam_version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "blueprint_revision": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "start_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "target_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "weekly_minutes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "total_minutes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "allocation_basis": {
+          "type": "string",
+          "minLength": 1
+        },
+        "weeks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/week"
+          },
+          "minItems": 1
+        },
+        "review_offsets_days": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "minItems": 1
+        },
+        "assumptions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "record_type",
+        "schema_version",
+        "student_id",
+        "certification_id",
+        "exam_code",
+        "exam_version",
+        "blueprint_revision",
+        "start_date",
+        "target_date",
+        "weekly_minutes",
+        "total_minutes",
+        "allocation_basis",
+        "weeks",
+        "review_offsets_days",
+        "assumptions"
+      ],
+      "additionalProperties": false
+    },
+    "answer": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      ]
+    },
+    "response": {
+      "type": "object",
+      "properties": {
+        "answer": {
+          "$ref": "#/$defs/answer"
+        },
+        "confidence": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 4
+        },
+        "recorded_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "answer",
+        "confidence",
+        "recorded_at"
+      ],
+      "additionalProperties": false
+    },
+    "rubric_grade": {
+      "type": "object",
+      "properties": {
+        "evaluator": {
+          "type": "string",
+          "minLength": 1
+        },
+        "estimated": {
+          "const": true
+        },
+        "criteria": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "criterion_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "awarded": {
+                "type": "number",
+                "minimum": 0
+              },
+              "evidence": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "criterion_id",
+              "awarded",
+              "evidence"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "evaluator",
+        "estimated",
+        "criteria"
+      ],
+      "additionalProperties": false
+    },
+    "event": {
+      "type": "object",
+      "properties": {
+        "record_type": {
+          "const": "event"
+        },
+        "schema_version": {
+          "const": "1.0"
+        },
+        "event_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "expected_revision": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "action": {
+          "enum": [
+            "answer",
+            "goto",
+            "next",
+            "flag",
+            "challenge",
+            "resolve",
+            "grade_open",
+            "submit",
+            "abandon"
+          ]
+        },
+        "payload": {
+          "type": "object"
+        },
+        "at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "record_type",
+        "schema_version",
+        "event_id",
+        "expected_revision",
+        "action",
+        "payload",
+        "at"
+      ],
+      "additionalProperties": false
+    },
+    "session": {
+      "type": "object",
+      "properties": {
+        "record_type": {
+          "const": "exam_session"
+        },
+        "schema_version": {
+          "const": "1.0"
+        },
+        "session_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "certification_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "exam_code": {
+          "type": "string",
+          "minLength": 1
+        },
+        "exam_version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "blueprint_revision": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "bank_digest": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "mode": {
+          "enum": [
+            "guided",
+            "mock",
+            "adaptive"
+          ]
+        },
+        "status": {
+          "enum": [
+            "in_progress",
+            "submitted",
+            "abandoned"
+          ]
+        },
+        "question_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "cursor": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "difficulty": {
+          "enum": [
+            "basic",
+            "intermediate",
+            "advanced",
+            "mixed"
+          ]
+        },
+        "responses": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/response"
+          }
+        },
+        "flagged": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "challenges": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "voided": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "resolutions": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "rubric_grades": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/rubric_grade"
+          }
+        },
+        "revealed_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "events": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/event"
+          },
+          "minItems": 0
+        },
+        "policy_version": {
+          "const": "exact-match-v1"
+        },
+        "created_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "submitted_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "distribution": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "record_type",
+        "schema_version",
+        "session_id",
+        "certification_id",
+        "exam_code",
+        "exam_version",
+        "blueprint_revision",
+        "bank_digest",
+        "mode",
+        "status",
+        "question_ids",
+        "cursor",
+        "revision",
+        "difficulty",
+        "responses",
+        "flagged",
+        "challenges",
+        "voided",
+        "resolutions",
+        "rubric_grades",
+        "revealed_ids",
+        "events",
+        "policy_version",
+        "created_at",
+        "submitted_at",
+        "distribution",
+        "limitations"
+      ],
+      "additionalProperties": false
+    },
+    "metric": {
+      "type": "object",
+      "properties": {
+        "valid": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "correct": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "incorrect": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "partial": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unanswered": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "excluded": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "pending": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "earned": {
+          "type": "number",
+          "minimum": 0
+        },
+        "possible": {
+          "type": "number",
+          "minimum": 0
+        },
+        "percentage": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 100
+        }
+      },
+      "required": [
+        "valid",
+        "correct",
+        "incorrect",
+        "partial",
+        "unanswered",
+        "excluded",
+        "pending",
+        "earned",
+        "possible",
+        "percentage"
+      ],
+      "additionalProperties": false
+    },
+    "result": {
+      "type": "object",
+      "properties": {
+        "question_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "domain": {
+          "type": "string",
+          "minLength": 1
+        },
+        "subdomain": {
+          "type": "string",
+          "minLength": 1
+        },
+        "objective": {
+          "type": "string",
+          "minLength": 1
+        },
+        "difficulty": {
+          "type": "string",
+          "minLength": 1
+        },
+        "answer": {
+          "$ref": "#/$defs/answer"
+        },
+        "correct_answers": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "outcome": {
+          "enum": [
+            "correct",
+            "incorrect",
+            "partial",
+            "unanswered",
+            "excluded",
+            "pending"
+          ]
+        },
+        "earned": {
+          "type": "number",
+          "minimum": 0
+        },
+        "possible": {
+          "type": "number",
+          "minimum": 0
+        },
+        "estimated": {
+          "type": "boolean"
+        },
+        "explanation": {
+          "type": "string",
+          "minLength": 1
+        },
+        "distractor_explanations": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "source_references": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/source"
+          },
+          "minItems": 1
+        },
+        "reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "rubric_evaluation": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/rubric_grade"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "question_id",
+        "domain",
+        "subdomain",
+        "objective",
+        "difficulty",
+        "answer",
+        "correct_answers",
+        "outcome",
+        "earned",
+        "possible",
+        "estimated",
+        "explanation",
+        "distractor_explanations",
+        "source_references",
+        "reason",
+        "rubric_evaluation"
+      ],
+      "additionalProperties": false
+    },
+    "report": {
+      "type": "object",
+      "properties": {
+        "record_type": {
+          "const": "performance_report"
+        },
+        "schema_version": {
+          "const": "1.0"
+        },
+        "session_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "session_revision": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "certification_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "exam_code": {
+          "type": "string",
+          "minLength": 1
+        },
+        "exam_version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "blueprint_revision": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "bank_digest": {
+          "type": "string",
+          "minLength": 1
+        },
+        "mode": {
+          "enum": [
+            "guided",
+            "mock",
+            "adaptive"
+          ]
+        },
+        "policy_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "provisional": {
+          "type": "boolean"
+        },
+        "metrics": {
+          "$ref": "#/$defs/metric"
+        },
+        "by_domain": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/metric"
+          }
+        },
+        "by_subdomain": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/metric"
+          }
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/result"
+          },
+          "minItems": 1
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "record_type",
+        "schema_version",
+        "session_id",
+        "session_revision",
+        "certification_id",
+        "exam_code",
+        "exam_version",
+        "blueprint_revision",
+        "bank_digest",
+        "mode",
+        "policy_version",
+        "provisional",
+        "metrics",
+        "by_domain",
+        "by_subdomain",
+        "items",
+        "limitations"
+      ],
+      "additionalProperties": false
+    },
+    "recommendations": {
+      "type": "object",
+      "properties": {
+        "record_type": {
+          "const": "adaptive_recommendations"
+        },
+        "schema_version": {
+          "const": "1.0"
+        },
+        "session_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "certification_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "exam_code": {
+          "type": "string",
+          "minLength": 1
+        },
+        "exam_version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "as_of": {
+          "type": "string",
+          "format": "date"
+        },
+        "priorities": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "domain": {
+                "type": "string",
+                "minLength": 1
+              },
+              "objective": {
+                "type": "string",
+                "minLength": 1
+              },
+              "question_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true
+              },
+              "evidence": {
+                "type": "string",
+                "minLength": 1
+              },
+              "next_action": {
+                "type": "string",
+                "minLength": 1
+              },
+              "next_difficulty": {
+                "enum": [
+                  "basic",
+                  "intermediate",
+                  "advanced",
+                  "unchanged"
+                ]
+              },
+              "review_dates": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "date"
+                },
+                "minItems": 1
+              }
+            },
+            "required": [
+              "domain",
+              "objective",
+              "question_ids",
+              "evidence",
+              "next_action",
+              "next_difficulty",
+              "review_dates"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 0
+        },
+        "interleaving": {
+          "type": "string",
+          "minLength": 1
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "record_type",
+        "schema_version",
+        "session_id",
+        "certification_id",
+        "exam_code",
+        "exam_version",
+        "as_of",
+        "priorities",
+        "interleaving",
+        "limitations"
+      ],
+      "additionalProperties": false
+    },
+    "history": {
+      "type": "object",
+      "properties": {
+        "record_type": {
+          "const": "attempt_history"
+        },
+        "schema_version": {
+          "const": "1.0"
+        },
+        "student_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "attempts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/report"
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "record_type",
+        "schema_version",
+        "student_id",
+        "attempts"
+      ],
+      "additionalProperties": false
+    },
+    "checkpoint": {
+      "type": "object",
+      "properties": {
+        "record_type": {
+          "const": "student_checkpoint"
+        },
+        "schema_version": {
+          "const": "1.0"
+        },
+        "session": {
+          "$ref": "#/$defs/session"
+        },
+        "questions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "question_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "stem": {
+                "type": "string",
+                "minLength": 1
+              },
+              "options": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "text": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "text"
+                  ],
+                  "additionalProperties": false
+                },
+                "minItems": 0
+              },
+              "response_format": {
+                "type": "string",
+                "minLength": 1
+              },
+              "selection_count": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "public_criteria": {
+                "type": "string",
+                "minLength": 1
+              },
+              "max_points": {
+                "type": "number",
+                "minimum": 0
+              }
+            },
+            "required": [
+              "question_id",
+              "stem",
+              "options",
+              "response_format",
+              "selection_count",
+              "public_criteria",
+              "max_points"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1
+        },
+        "resume_requires": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "record_type",
+        "schema_version",
+        "session",
+        "questions",
+        "resume_requires"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "oneOf": [
+    {
+      "$ref": "#/$defs/source"
+    },
+    {
+      "$ref": "#/$defs/blueprint"
+    },
+    {
+      "$ref": "#/$defs/question"
+    },
+    {
+      "$ref": "#/$defs/question_bank"
+    },
+    {
+      "$ref": "#/$defs/student_profile"
+    },
+    {
+      "$ref": "#/$defs/study_plan"
+    },
+    {
+      "$ref": "#/$defs/session"
+    },
+    {
+      "$ref": "#/$defs/event"
+    },
+    {
+      "$ref": "#/$defs/report"
+    },
+    {
+      "$ref": "#/$defs/recommendations"
+    },
+    {
+      "$ref": "#/$defs/history"
+    },
+    {
+      "$ref": "#/$defs/checkpoint"
+    }
+  ]
+}

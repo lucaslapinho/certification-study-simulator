@@ -1,0 +1,30 @@
+{
+  "name": "certification-study-simulator",
+  "version": "0.1.2",
+  "description": "Preparação para certificações profissionais com plano de estudos, prática guiada, simulados e revisão adaptativa.",
+  "author": {
+    "name": "Lucas Pinho"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Certification Teacher & Exam Simulator",
+    "shortDescription": "Estudo e simulados",
+    "longDescription": "Prepare-se para certificações profissionais em português. Monte um plano de estudos, pratique com feedback, faça simulados com questões originais e descubra quais temas revisar a partir dos seus resultados. A pontuação serve para orientar os estudos.",
+    "developerName": "Lucas Pinho",
+    "category": "Education & Research",
+    "capabilities": [
+      "Planejamento de estudos",
+      "Prática guiada",
+      "Simulados de certificação",
+      "Análise de desempenho",
+      "Revisão adaptativa"
+    ],
+    "logo": "./assets/certification-study-simulator.png",
+    "composerIcon": "./assets/certification-study-simulator.png",
+    "defaultPrompt": [
+      "Monte um plano de estudos para minha certificação.",
+      "Inicie um simulado AWS CLF-C02 de 10 questões, uma por vez.",
+      "Revise meus erros e recomende o próximo treino."
+    ]
+  }
+}

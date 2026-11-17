@@ -1,0 +1,723 @@
+{
+  "record_type": "question_bank",
+  "schema_version": "1.0",
+  "bank_id": "aws-clf-c02-original-demo-0.1.0",
+  "questions": [
+    {
+      "record_type": "question",
+      "schema_version": "1.0",
+      "certification_id": "aws-cloud-practitioner",
+      "exam_code": "CLF-C02",
+      "exam_version": null,
+      "question_id": "CLF-P001",
+      "domain": "D1",
+      "subdomain": "Elasticidade",
+      "objective": "1.1",
+      "question_type": "single-choice",
+      "response_format": "single",
+      "difficulty": "basic",
+      "stem": "Um serviço aumenta a capacidade durante um pico de acessos e a reduz após o pico. Qual benefício da nuvem está sendo aplicado?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Elasticidade"
+        },
+        {
+          "id": "B",
+          "text": "Residência de dados"
+        },
+        {
+          "id": "C",
+          "text": "Arquivamento"
+        },
+        {
+          "id": "D",
+          "text": "Autenticação multifator"
+        }
+      ],
+      "selection_count": 1,
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "Elasticidade ajusta a capacidade à demanda, inclusive reduzindo-a quando o pico termina.",
+      "distractor_explanations": {
+        "B": "Residência de dados trata da localização dos dados.",
+        "C": "Arquivamento trata de retenção, não de ajuste de capacidade.",
+        "D": "MFA reforça autenticação."
+      },
+      "source_references": [
+        {
+          "source_id": "aws-benefits",
+          "organization": "AWS",
+          "certification": "AWS Certified Cloud Practitioner",
+          "exam_code": "CLF-C02",
+          "exam_version": null,
+          "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
+          "accessed_on": "2026-11-16",
+          "supports": [
+            "1.1",
+            "1.4"
+          ],
+          "update_status": "checked_snapshot",
+          "limitations": []
+        }
+      ],
+      "scoring_policy": {
+        "method": "exact_match",
+        "max_points": 1,
+        "public_criteria": "Selecione 1 alternativa(s). 1 ponto somente para o conjunto exato; sem crédito parcial.",
+        "rubric": []
+      },
+      "review_status": "reviewed",
+      "review_notes": "Questão original de prática gerada por IA. Gabarito confrontado com a fonte pelo autor da implementação; revisão independente não realizada.",
+      "reviewed_on": "2026-11-16",
+      "origin": "ai_original_practice",
+      "content_revision": 1
+    },
+    {
+      "record_type": "question",
+      "schema_version": "1.0",
+      "certification_id": "aws-cloud-practitioner",
+      "exam_code": "CLF-C02",
+      "exam_version": null,
+      "question_id": "CLF-P002",
+      "domain": "D1",
+      "subdomain": "Custos fixos e variáveis",
+      "objective": "1.4",
+      "question_type": "single-choice",
+      "response_format": "single",
+      "difficulty": "basic",
+      "stem": "Uma equipe troca a compra antecipada de servidores por recursos de nuvem cobrados conforme o consumo. Qual mudança econômica isso ilustra?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Transformar qualquer custo em despesa zero"
+        },
+        {
+          "id": "B",
+          "text": "Trocar parte do investimento fixo por gasto variável"
+        },
+        {
+          "id": "C",
+          "text": "Eliminar a necessidade de acompanhar gastos"
+        },
+        {
+          "id": "D",
+          "text": "Garantir que toda aplicação sempre custará menos"
+        }
+      ],
+      "selection_count": 1,
+      "correct_answers": [
+        "B"
+      ],
+      "explanation": "A cobrança por consumo permite substituir parte do investimento inicial por despesas variáveis. Economia total depende do uso.",
+      "distractor_explanations": {
+        "A": "O consumo continua tendo custos.",
+        "C": "A gestão dos gastos continua necessária.",
+        "D": "Não há garantia de menor custo para todo cenário."
+      },
+      "source_references": [
+        {
+          "source_id": "aws-benefits",
+          "organization": "AWS",
+          "certification": "AWS Certified Cloud Practitioner",
+          "exam_code": "CLF-C02",
+          "exam_version": null,
+          "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html",
+          "accessed_on": "2026-11-16",
+          "supports": [
+            "1.1",
+            "1.4"
+          ],
+          "update_status": "checked_snapshot",
+          "limitations": []
+        }
+      ],
+      "scoring_policy": {
+        "method": "exact_match",
+        "max_points": 1,
+        "public_criteria": "Selecione 1 alternativa(s). 1 ponto somente para o conjunto exato; sem crédito parcial.",
+        "rubric": []
+      },
+      "review_status": "reviewed",
+      "review_notes": "Questão original de prática gerada por IA. Gabarito confrontado com a fonte pelo autor da implementação; revisão independente não realizada.",
+      "reviewed_on": "2026-11-16",
+      "origin": "ai_original_practice",
+      "content_revision": 1
+    },
+    {
+      "record_type": "question",
+      "schema_version": "1.0",
+      "certification_id": "aws-cloud-practitioner",
+      "exam_code": "CLF-C02",
+      "exam_version": null,
+      "question_id": "CLF-P003",
+      "domain": "D2",
+      "subdomain": "Práticas de acesso",
+      "objective": "2.3",
+      "question_type": "multiple-response",
+      "response_format": "multiple",
+      "difficulty": "basic",
+      "stem": "Uma conta mantém credenciais de root para operações excepcionais. Quais DUAS práticas reduzem o risco no uso de identidades?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Usar root nas atividades diárias"
+        },
+        {
+          "id": "B",
+          "text": "Exigir MFA para a identidade root mantida"
+        },
+        {
+          "id": "C",
+          "text": "Compartilhar a senha root com toda a equipe"
+        },
+        {
+          "id": "D",
+          "text": "Conceder apenas as permissões necessárias às identidades de trabalho"
+        },
+        {
+          "id": "E",
+          "text": "Criar access keys de root para cada aplicação"
+        }
+      ],
+      "selection_count": 2,
+      "correct_answers": [
+        "B",
+        "D"
+      ],
+      "explanation": "MFA adiciona proteção à autenticação; least privilege limita o que cada identidade pode fazer.",
+      "distractor_explanations": {
+        "A": "Root deve ficar reservado às tarefas que o exigem.",
+        "C": "Compartilhar credenciais elimina a responsabilização individual.",
+        "E": "Aplicações devem usar credenciais temporárias com roles, não chaves de root."
+      },
+      "source_references": [
+        {
+          "source_id": "aws-iam",
+          "organization": "AWS",
+          "certification": "AWS Certified Cloud Practitioner",
+          "exam_code": "CLF-C02",
+          "exam_version": null,
+          "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html",
+          "accessed_on": "2026-11-16",
+          "supports": [
+            "2.3"
+          ],
+          "update_status": "checked_snapshot",
+          "limitations": []
+        }
+      ],
+      "scoring_policy": {
+        "method": "exact_match",
+        "max_points": 1,
+        "public_criteria": "Selecione 2 alternativa(s). 1 ponto somente para o conjunto exato; sem crédito parcial.",
+        "rubric": []
+      },
+      "review_status": "reviewed",
+      "review_notes": "Questão original de prática gerada por IA. Gabarito confrontado com a fonte pelo autor da implementação; revisão independente não realizada.",
+      "reviewed_on": "2026-11-16",
+      "origin": "ai_original_practice",
+      "content_revision": 1
+    },
+    {
+      "record_type": "question",
+      "schema_version": "1.0",
+      "certification_id": "aws-cloud-practitioner",
+      "exam_code": "CLF-C02",
+      "exam_version": null,
+      "question_id": "CLF-P004",
+      "domain": "D2",
+      "subdomain": "Credenciais temporárias",
+      "objective": "2.3",
+      "question_type": "scenario-based",
+      "response_format": "single",
+      "difficulty": "intermediate",
+      "stem": "Uma aplicação em EC2 precisa ler um bucket S3 sem guardar access keys de usuário no disco. Qual abordagem atende ao requisito?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Publicar o bucket na internet"
+        },
+        {
+          "id": "B",
+          "text": "Adicionar uma rota na VPC"
+        },
+        {
+          "id": "C",
+          "text": "Associar uma IAM role apropriada à instância"
+        },
+        {
+          "id": "D",
+          "text": "Guardar a senha root na aplicação"
+        }
+      ],
+      "selection_count": 1,
+      "correct_answers": [
+        "C"
+      ],
+      "explanation": "Uma IAM role associada ao recurso fornece credenciais temporárias; a policy deve permitir somente o acesso necessário.",
+      "distractor_explanations": {
+        "A": "A exposição pública não atende ao controle de acesso.",
+        "B": "Uma rota não fornece credenciais IAM.",
+        "D": "Credenciais root embutidas ampliam o risco e não são necessárias."
+      },
+      "source_references": [
+        {
+          "source_id": "aws-iam",
+          "organization": "AWS",
+          "certification": "AWS Certified Cloud Practitioner",
+          "exam_code": "CLF-C02",
+          "exam_version": null,
+          "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html",
+          "accessed_on": "2026-11-16",
+          "supports": [
+            "2.3"
+          ],
+          "update_status": "checked_snapshot",
+          "limitations": []
+        }
+      ],
+      "scoring_policy": {
+        "method": "exact_match",
+        "max_points": 1,
+        "public_criteria": "Selecione 1 alternativa(s). 1 ponto somente para o conjunto exato; sem crédito parcial.",
+        "rubric": []
+      },
+      "review_status": "reviewed",
+      "review_notes": "Questão original de prática gerada por IA. Gabarito confrontado com a fonte pelo autor da implementação; revisão independente não realizada.",
+      "reviewed_on": "2026-11-16",
+      "origin": "ai_original_practice",
+      "content_revision": 1
+    },
+    {
+      "record_type": "question",
+      "schema_version": "1.0",
+      "certification_id": "aws-cloud-practitioner",
+      "exam_code": "CLF-C02",
+      "exam_version": null,
+      "question_id": "CLF-P005",
+      "domain": "D2",
+      "subdomain": "Responsabilidade em EC2",
+      "objective": "2.1",
+      "question_type": "single-choice",
+      "response_format": "single",
+      "difficulty": "basic",
+      "stem": "Uma equipe opera uma instância Amazon EC2 convencional. Quem responde pela aplicação de patches no sistema operacional convidado?",
+      "options": [
+        {
+          "id": "A",
+          "text": "O cliente"
+        },
+        {
+          "id": "B",
+          "text": "A equipe de segurança física da AWS"
+        },
+        {
+          "id": "C",
+          "text": "O fabricante do roteador da AWS"
+        },
+        {
+          "id": "D",
+          "text": "Nenhuma parte, pois EC2 dispensa patches"
+        }
+      ],
+      "selection_count": 1,
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "No EC2, o cliente gerencia o sistema operacional convidado e seus patches; a AWS cuida da infraestrutura subjacente.",
+      "distractor_explanations": {
+        "B": "Segurança física não inclui patch do sistema convidado.",
+        "C": "O fabricante do roteador não administra o SO da instância.",
+        "D": "A necessidade de patches continua existindo."
+      },
+      "source_references": [
+        {
+          "source_id": "aws-shared",
+          "organization": "AWS",
+          "certification": "AWS Certified Cloud Practitioner",
+          "exam_code": "CLF-C02",
+          "exam_version": null,
+          "url": "https://aws.amazon.com/compliance/shared-responsibility-model/",
+          "accessed_on": "2026-11-16",
+          "supports": [
+            "2.1"
+          ],
+          "update_status": "checked_snapshot",
+          "limitations": []
+        }
+      ],
+      "scoring_policy": {
+        "method": "exact_match",
+        "max_points": 1,
+        "public_criteria": "Selecione 1 alternativa(s). 1 ponto somente para o conjunto exato; sem crédito parcial.",
+        "rubric": []
+      },
+      "review_status": "reviewed",
+      "review_notes": "Questão original de prática gerada por IA. Gabarito confrontado com a fonte pelo autor da implementação; revisão independente não realizada.",
+      "reviewed_on": "2026-11-16",
+      "origin": "ai_original_practice",
+      "content_revision": 1
+    },
+    {
+      "record_type": "question",
+      "schema_version": "1.0",
+      "certification_id": "aws-cloud-practitioner",
+      "exam_code": "CLF-C02",
+      "exam_version": null,
+      "question_id": "CLF-P006",
+      "domain": "D3",
+      "subdomain": "Armazenamento de objetos",
+      "objective": "3.6",
+      "question_type": "single-choice",
+      "response_format": "single",
+      "difficulty": "basic",
+      "stem": "Uma aplicação precisa armazenar imagens como objetos identificados por chaves em buckets. Qual serviço é adequado?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Amazon RDS"
+        },
+        {
+          "id": "B",
+          "text": "Amazon Route 53"
+        },
+        {
+          "id": "C",
+          "text": "AWS IAM"
+        },
+        {
+          "id": "D",
+          "text": "Amazon S3"
+        }
+      ],
+      "selection_count": 1,
+      "correct_answers": [
+        "D"
+      ],
+      "explanation": "Amazon S3 armazena objetos em buckets e permite recuperá-los por suas chaves.",
+      "distractor_explanations": {
+        "A": "RDS é serviço de banco de dados relacional.",
+        "B": "Route 53 atende funções de DNS e roteamento de tráfego.",
+        "C": "IAM gerencia identidades e permissões."
+      },
+      "source_references": [
+        {
+          "source_id": "aws-s3",
+          "organization": "AWS",
+          "certification": "AWS Certified Cloud Practitioner",
+          "exam_code": "CLF-C02",
+          "exam_version": null,
+          "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
+          "accessed_on": "2026-11-16",
+          "supports": [
+            "3.6"
+          ],
+          "update_status": "checked_snapshot",
+          "limitations": []
+        }
+      ],
+      "scoring_policy": {
+        "method": "exact_match",
+        "max_points": 1,
+        "public_criteria": "Selecione 1 alternativa(s). 1 ponto somente para o conjunto exato; sem crédito parcial.",
+        "rubric": []
+      },
+      "review_status": "reviewed",
+      "review_notes": "Questão original de prática gerada por IA. Gabarito confrontado com a fonte pelo autor da implementação; revisão independente não realizada.",
+      "reviewed_on": "2026-11-16",
+      "origin": "ai_original_practice",
+      "content_revision": 1
+    },
+    {
+      "record_type": "question",
+      "schema_version": "1.0",
+      "certification_id": "aws-cloud-practitioner",
+      "exam_code": "CLF-C02",
+      "exam_version": null,
+      "question_id": "CLF-P007",
+      "domain": "D3",
+      "subdomain": "Computação serverless",
+      "objective": "3.3",
+      "question_type": "scenario-based",
+      "response_format": "single",
+      "difficulty": "basic",
+      "stem": "Uma equipe quer executar uma função em resposta a um evento S3 sem provisionar servidores. Qual serviço oferece esse modelo?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Amazon EC2 com administração manual"
+        },
+        {
+          "id": "B",
+          "text": "AWS Lambda"
+        },
+        {
+          "id": "C",
+          "text": "Amazon VPC"
+        },
+        {
+          "id": "D",
+          "text": "Amazon EBS"
+        }
+      ],
+      "selection_count": 1,
+      "correct_answers": [
+        "B"
+      ],
+      "explanation": "AWS Lambda pode executar código acionado por eventos e gerencia a infraestrutura de execução.",
+      "distractor_explanations": {
+        "A": "EC2 convencional exige que a equipe gerencie as instâncias.",
+        "C": "VPC fornece a rede, não executa a função.",
+        "D": "EBS fornece armazenamento em blocos."
+      },
+      "source_references": [
+        {
+          "source_id": "aws-lambda",
+          "organization": "AWS",
+          "certification": "AWS Certified Cloud Practitioner",
+          "exam_code": "CLF-C02",
+          "exam_version": null,
+          "url": "https://docs.aws.amazon.com/lambda/latest/dg/welcome.html",
+          "accessed_on": "2026-11-16",
+          "supports": [
+            "3.3"
+          ],
+          "update_status": "checked_snapshot",
+          "limitations": []
+        }
+      ],
+      "scoring_policy": {
+        "method": "exact_match",
+        "max_points": 1,
+        "public_criteria": "Selecione 1 alternativa(s). 1 ponto somente para o conjunto exato; sem crédito parcial.",
+        "rubric": []
+      },
+      "review_status": "reviewed",
+      "review_notes": "Questão original de prática gerada por IA. Gabarito confrontado com a fonte pelo autor da implementação; revisão independente não realizada.",
+      "reviewed_on": "2026-11-16",
+      "origin": "ai_original_practice",
+      "content_revision": 1
+    },
+    {
+      "record_type": "question",
+      "schema_version": "1.0",
+      "certification_id": "aws-cloud-practitioner",
+      "exam_code": "CLF-C02",
+      "exam_version": null,
+      "question_id": "CLF-P008",
+      "domain": "D3",
+      "subdomain": "Bancos relacionais",
+      "objective": "3.4",
+      "question_type": "single-choice",
+      "response_format": "single",
+      "difficulty": "basic",
+      "stem": "Uma equipe precisa de PostgreSQL com tarefas comuns de administração de banco gerenciadas pela AWS. Qual opção corresponde a esse requisito?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Amazon S3"
+        },
+        {
+          "id": "B",
+          "text": "Amazon DynamoDB"
+        },
+        {
+          "id": "C",
+          "text": "Amazon RDS for PostgreSQL"
+        },
+        {
+          "id": "D",
+          "text": "Amazon Route 53"
+        }
+      ],
+      "selection_count": 1,
+      "correct_answers": [
+        "C"
+      ],
+      "explanation": "RDS oferece engines relacionais, incluindo PostgreSQL, e gerencia tarefas comuns de administração.",
+      "distractor_explanations": {
+        "A": "S3 é armazenamento de objetos.",
+        "B": "DynamoDB é um banco NoSQL, não PostgreSQL.",
+        "D": "Route 53 não hospeda bancos relacionais."
+      },
+      "source_references": [
+        {
+          "source_id": "aws-rds",
+          "organization": "AWS",
+          "certification": "AWS Certified Cloud Practitioner",
+          "exam_code": "CLF-C02",
+          "exam_version": null,
+          "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html",
+          "accessed_on": "2026-11-16",
+          "supports": [
+            "3.4"
+          ],
+          "update_status": "checked_snapshot",
+          "limitations": []
+        }
+      ],
+      "scoring_policy": {
+        "method": "exact_match",
+        "max_points": 1,
+        "public_criteria": "Selecione 1 alternativa(s). 1 ponto somente para o conjunto exato; sem crédito parcial.",
+        "rubric": []
+      },
+      "review_status": "reviewed",
+      "review_notes": "Questão original de prática gerada por IA. Gabarito confrontado com a fonte pelo autor da implementação; revisão independente não realizada.",
+      "reviewed_on": "2026-11-16",
+      "origin": "ai_original_practice",
+      "content_revision": 1
+    },
+    {
+      "record_type": "question",
+      "schema_version": "1.0",
+      "certification_id": "aws-cloud-practitioner",
+      "exam_code": "CLF-C02",
+      "exam_version": null,
+      "question_id": "CLF-P009",
+      "domain": "D3",
+      "subdomain": "Availability Zones",
+      "objective": "3.2",
+      "question_type": "scenario-based",
+      "response_format": "single",
+      "difficulty": "intermediate",
+      "stem": "Uma aplicação precisa continuar atendendo se uma Availability Zone falhar, permanecendo na mesma AWS Region. Qual distribuição reduz esse ponto único de falha?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Todas as instâncias em uma única AZ"
+        },
+        {
+          "id": "B",
+          "text": "Duas sub-redes na mesma AZ"
+        },
+        {
+          "id": "C",
+          "text": "Instâncias somente em uma edge location"
+        },
+        {
+          "id": "D",
+          "text": "Recursos redundantes em pelo menos duas AZs, com distribuição de tráfego"
+        }
+      ],
+      "selection_count": 1,
+      "correct_answers": [
+        "D"
+      ],
+      "explanation": "Usar múltiplas AZs permite distribuir recursos entre domínios de falha distintos dentro de uma Region; a aplicação precisa estar configurada para failover.",
+      "distractor_explanations": {
+        "A": "Uma falha da AZ afeta o conjunto inteiro.",
+        "B": "Duas sub-redes na mesma AZ compartilham a falha dessa AZ.",
+        "C": "Edge locations não substituem a distribuição de recursos entre AZs."
+      },
+      "source_references": [
+        {
+          "source_id": "aws-domain3",
+          "organization": "AWS",
+          "certification": "AWS Certified Cloud Practitioner",
+          "exam_code": "CLF-C02",
+          "exam_version": null,
+          "url": "https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain3.html",
+          "accessed_on": "2026-11-16",
+          "supports": [
+            "3.1",
+            "3.2",
+            "3.3",
+            "3.4",
+            "3.5",
+            "3.6",
+            "3.7",
+            "3.8"
+          ],
+          "update_status": "checked_snapshot",
+          "limitations": [
+            "Títulos de objetivos resumidos em português; consultar redação oficial."
+          ]
+        }
+      ],
+      "scoring_policy": {
+        "method": "exact_match",
+        "max_points": 1,
+        "public_criteria": "Selecione 1 alternativa(s). 1 ponto somente para o conjunto exato; sem crédito parcial.",
+        "rubric": []
+      },
+      "review_status": "reviewed",
+      "review_notes": "Questão original de prática gerada por IA. Gabarito confrontado com a fonte pelo autor da implementação; revisão independente não realizada.",
+      "reviewed_on": "2026-11-16",
+      "origin": "ai_original_practice",
+      "content_revision": 1
+    },
+    {
+      "record_type": "question",
+      "schema_version": "1.0",
+      "certification_id": "aws-cloud-practitioner",
+      "exam_code": "CLF-C02",
+      "exam_version": null,
+      "question_id": "CLF-P010",
+      "domain": "D4",
+      "subdomain": "Estimativa de custos",
+      "objective": "4.2",
+      "question_type": "single-choice",
+      "response_format": "single",
+      "difficulty": "basic",
+      "stem": "Antes de implantar uma solução, uma equipe quer estimar o custo dos serviços e configurações planejados. Qual ferramenta se destina a essa tarefa?",
+      "options": [
+        {
+          "id": "A",
+          "text": "AWS CloudTrail"
+        },
+        {
+          "id": "B",
+          "text": "AWS Pricing Calculator"
+        },
+        {
+          "id": "C",
+          "text": "AWS IAM"
+        },
+        {
+          "id": "D",
+          "text": "Amazon Route 53"
+        }
+      ],
+      "selection_count": 1,
+      "correct_answers": [
+        "B"
+      ],
+      "explanation": "AWS Pricing Calculator modela custos de serviços a partir de configurações e uso previstos; o resultado é uma estimativa.",
+      "distractor_explanations": {
+        "A": "CloudTrail registra atividades de API.",
+        "C": "IAM gerencia acesso.",
+        "D": "Route 53 não calcula o custo de uma arquitetura."
+      },
+      "source_references": [
+        {
+          "source_id": "aws-calculator",
+          "organization": "AWS",
+          "certification": "AWS Certified Cloud Practitioner",
+          "exam_code": "CLF-C02",
+          "exam_version": null,
+          "url": "https://docs.aws.amazon.com/pricing-calculator/latest/userguide/what-is-pricing-calculator.html",
+          "accessed_on": "2026-11-16",
+          "supports": [
+            "4.2"
+          ],
+          "update_status": "checked_snapshot",
+          "limitations": []
+        }
+      ],
+      "scoring_policy": {
+        "method": "exact_match",
+        "max_points": 1,
+        "public_criteria": "Selecione 1 alternativa(s). 1 ponto somente para o conjunto exato; sem crédito parcial.",
+        "rubric": []
+      },
+      "review_status": "reviewed",
+      "review_notes": "Questão original de prática gerada por IA. Gabarito confrontado com a fonte pelo autor da implementação; revisão independente não realizada.",
+      "reviewed_on": "2026-11-16",
+      "origin": "ai_original_practice",
+      "content_revision": 1
+    }
+  ]
+}
