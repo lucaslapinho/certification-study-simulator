@@ -1,31 +1,35 @@
 # Certification Teacher & Exam Simulator
 
-Plugin para estudar para certificações profissionais em português. Cria planos de estudo, conduz prática guiada e simulados, corrige respostas e indica quais temas revisar.
+Prepare for professional certifications with study plans, guided practice, mock exams, and targeted review based on your results.
 
-**Plugin 0.1.2 · Skill 0.1.0**. O exemplo reproduzível cobre dez questões originais para AWS CLF-C02. Para outros exames, informe a certificação e forneça o guia oficial quando a sessão não puder consultá-lo.
+**Plugin 0.1.2 · Skill 0.1.0**. The reproducible demo uses ten original practice questions for AWS CLF-C02. For other exams, specify the certification and provide the official exam guide if the session cannot access it.
 
-## Instalar no ChatGPT
+## Install in ChatGPT
 
-1. Em **Releases**, baixe o asset `certification-study-simulator-0.1.2-plugin.zip`.
-2. No ChatGPT, em **Plugins → Personal → Add → Upload plugin archive**, envie o ZIP e clique em **Add plugin**. Clique em **Install** se a interface oferecer essa etapa.
-3. Em uma conversa nova, selecione **Certification Teacher & Exam Simulator** pelo `@` e peça um simulado.
+1. Download `certification-study-simulator-0.1.2-plugin.zip` from the [v0.1.2 release](https://github.com/lucaslapinho/certification-study-simulator/releases/tag/v0.1.2).
+2. In ChatGPT, open **Plugins → Personal → Add → Upload plugin archive**. Upload the ZIP and click **Add plugin**. Click **Install** if prompted.
+3. Start a new conversation, use `@` to select **Certification Teacher & Exam Simulator**, and ask for a mock exam.
 
-O ZIP de código disponível em **Code → Download ZIP** tem a estrutura do repositório. Use o asset da release para importação.
+Use the release asset for import. The ZIP under **Code → Download ZIP** contains the development repository.
 
-> Use o Certification Teacher & Exam Simulator para um simulado AWS CLF-C02 de 10 questões. Apresente uma por vez e revele o gabarito quando eu disser finalizar.
+> Use Certification Teacher & Exam Simulator for a 10-question AWS CLF-C02 mock exam. Run it in English, show one question at a time, and reveal the answer key when I ask to submit.
 
-## Como funciona
+## Language
 
-| Modo | O que acontece |
+The tutor defaults to Brazilian Portuguese and is instructed to use the language you request for the session. To study in English, include “Run this session in English” in your first prompt. The plugin's listing descriptions, bundled demo questions, and static templates in v0.1.2 are written in Brazilian Portuguese.
+
+## Study modes
+
+| Mode | What to expect |
 |---|---|
-| Diagnóstico e plano | Identifica versão do exame, tempo disponível e temas prioritários. |
-| Prática guiada | Corrige cada resposta e explica o raciocínio. |
-| Simulado | Registra respostas, permite revisão e mostra a correção após `finalizar`. |
-| Revisão adaptativa | Recomenda próximos exercícios com base nos erros e no histórico disponível. |
+| Diagnostic and study plan | Identify the exam version, available study time, and priority topics. |
+| Guided Practice | Get feedback and an explanation after each answer. |
+| Mock Exam | Record and review your answers. See your score and explanations after submitting. |
+| Adaptive Practice | Review missed objectives and practice new questions based on the records available. |
 
-A Skill também funciona por texto. Em uma sessão com acesso à pasta, peça ao agente para ler o [SKILL.md](source/certification-study-simulator/SKILL.md) junto com os recursos locais. Os registros de estudo são portáteis em JSON, Markdown e CSV.
+You can run the Skill through text commands. In a session with access to the source folder, ask the agent to read [SKILL.md](source/certification-study-simulator/SKILL.md) and its linked resources. Study records are portable in JSON, Markdown, and CSV.
 
-## Desenvolvimento
+## Development
 
 ```bash
 python3 -m venv .venv
@@ -37,17 +41,17 @@ python tools/demo.py
 python tools/package.py --plugin --version 0.1.2
 ```
 
-Use Python 3.10 ou mais recente. Os testes verificam os contratos, o cálculo de pontuação, as transições da sessão, a exportação e os metadados do ZIP. A demonstração usa respostas sintéticas. O build grava os ZIPs e `SHA256SUMS.txt` em `packages/0.1.2/`. Em um diretório novo, valide os downloads com `sha256sum -c SHA256SUMS.txt`.
+Use Python 3.10 or later. The tests cover data contracts, scoring, session transitions, exports, and archive metadata. The demo uses synthetic responses. The build writes the ZIP archives and `SHA256SUMS.txt` to `packages/0.1.2/`. Run `sha256sum -c SHA256SUMS.txt` in the directory with the downloaded files.
 
-| Recurso | Caminho |
+| Resource | Path |
 |---|---|
-| Skill, motor, contratos e exemplos | [source/](source/certification-study-simulator/) |
-| Manifesto e ícone | [plugin/](plugin/) |
-| Testes e fixtures sintéticos | [tests/](tests/) |
-| Guia de manifesto e estrutura do ZIP | [docs/PLUGIN-PACKAGING.md](docs/PLUGIN-PACKAGING.md) |
-| Prompts de exemplo | [docs/EXAMPLES.md](docs/EXAMPLES.md) |
-| Evidências e limites | [docs/VALIDATION.md](docs/VALIDATION.md) |
-| Organização do repositório | [docs/FILE-INDEX.md](docs/FILE-INDEX.md) |
-| Histórico de mudanças | [CHANGELOG.md](CHANGELOG.md) |
+| Skill, engine, contracts, and examples | [source/](source/certification-study-simulator/) |
+| Manifest and icon | [plugin/](plugin/) |
+| Tests and synthetic fixtures | [tests/](tests/) |
+| Manifest and archive layout | [Packaging guide](docs/PLUGIN-PACKAGING.md) |
+| Sample prompts | [Usage examples](docs/EXAMPLES.md) |
+| Validation results and limits | [Validation](docs/VALIDATION.md) |
+| Repository layout | [File index](docs/FILE-INDEX.md) |
+| Release history | [Changelog](CHANGELOG.md) |
 
-O plugin usa `.codex-plugin/plugin.json`, com a Skill sob `skills/certification-study-simulator/` dentro do ZIP. Para testar importação e seleção pelo `@`, use uma sessão ChatGPT com suporte a plugins. O gabarito no banco de demonstração fica acessível a quem inspecionar os arquivos. A pontuação é diagnóstica e as fontes de cada exame devem ser verificadas antes do estudo.
+The plugin ZIP contains `.codex-plugin/plugin.json` and the Skill under `skills/certification-study-simulator/`. To test import and `@` selection, use a ChatGPT session with plugin support. Anyone with access to the demo question bank can inspect the answer key. Mock scores are diagnostic. Verify the exam's official sources before using the materials.

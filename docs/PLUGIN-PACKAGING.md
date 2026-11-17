@@ -1,36 +1,36 @@
-# Empacotamento de plugins para ChatGPT e Codex
+# Plugin packaging for ChatGPT and Codex
 
-Referências oficiais consultadas em **17/11/2026**. Aplicar o contrato do importador de destino antes de gerar cada release.
+Official references were reviewed on **2026-11-17**. Check the target importer's contract before building each release.
 
-| Formato | Manifesto | Local das Skills | Metadados de exibição |
+| Format | Manifest | Skill location | Display metadata |
 |---|---|---|---|
-| Agent Plugins, formato portátil recomendado para pacotes novos | `plugin.json` na raiz, com o `$schema` da versão do formato | Descoberta em `skills/<nome>/SKILL.md` | `extensions.com.openai.interface` |
-| Compatibilidade Codex, usada na release 0.1.2 | `.codex-plugin/plugin.json` | `skills: "./skills/"` aponta para a pasta que contém cada Skill | `interface` na raiz do manifesto |
+| Agent Plugins, the recommended portable format for new packages | Root-level `plugin.json` with the format version's `$schema` | Discovered under `skills/<name>/SKILL.md` | `extensions.com.openai.interface` |
+| Codex compatibility format, used in v0.1.2 | `.codex-plugin/plugin.json` | `skills: "./skills/"` points to the directory containing the Skills | `interface` at the manifest root |
 
-O pacote atual usa a segunda opção, a mesma estrutura encontrada no Cortex AI Skills e no Language Teacher. A tela **New Plugin** reconheceu o caminho do manifesto da versão 0.1.1 e acusou a ausência de `interface.longDescription`.
+The v0.1.2 package uses the same compatibility layout as Cortex AI Skills and Language Teacher. The **New Plugin** dialog recognized the v0.1.1 manifest path and reported that `interface.longDescription` was missing.
 
-## Campos conferidos no formato de compatibilidade
+## Compatibility manifest checks
 
-| Campo | Validação aplicada neste projeto |
+| Field | Project check |
 |---|---|
-| `name`, `version`, `description` | Identificador técnico, versão de release e descrição preenchida |
-| `author.name` | Nome de autor preenchido, com a mesma identificação usada no Language Teacher |
-| `interface.displayName`, `shortDescription`, `longDescription`, `developerName` | Texto com conteúdo após remover espaços das extremidades. A descrição longa admite quebras de linha e tem limite de 4.000 caracteres. |
-| `interface.category` e `capabilities` | Categoria reconhecida e lista de capacidades com limites documentados |
-| `interface.logo`, `composerIcon` | Caminhos relativos para arquivos incluídos no ZIP. O projeto usa um PNG quadrado para os dois campos. |
-| `interface.defaultPrompt` | Campo opcional. Até três sugestões em uma linha por item. |
+| `name`, `version`, `description` | Technical identifier, release version, and a non-empty description |
+| `author.name` | Non-empty author name matching the author identity used by Language Teacher |
+| `interface.displayName`, `shortDescription`, `longDescription`, `developerName` | Non-whitespace text. The long description can contain line breaks and has a 4,000-character limit. |
+| `interface.category`, `capabilities` | Recognized category and capability list within documented limits |
+| `interface.logo`, `composerIcon` | Relative paths to files in the ZIP. This project uses the same square PNG for both fields. |
+| `interface.defaultPrompt` | Optional. Up to three suggestions, each on a single line. |
 
-Cada Skill fica na própria pasta com `name` e `description` no frontmatter YAML de `SKILL.md`. O empacotador inclui somente o manifesto, o ícone e os arquivos de uso da Skill.
+Each Skill has its own directory and an `SKILL.md` file with YAML frontmatter containing `name` and `description`. The packager includes the manifest, icon, and Skill runtime files.
 
-## Verificar antes de distribuir
+## Distribution checks
 
-1. Conferir os campos obrigatórios e os limites da superfície. O nome de exibição atual tem mais de 30 caracteres. Ele cabe no limite de validação do pacote, e uma eventual submissão pública exigiria encurtá-lo.
-2. Validar que cada caminho do manifesto existe dentro do ZIP. Os ícones devem ser quadrados e ter pelo menos 48 px. Para PNG, o limite superior documentado é 4096 px e 5 MiB.
-3. Executar `python3 tests/test_plugin_package.py -v` e `python3 tools/package.py --plugin --version 0.1.2`. A checagem do empacotador cobre o manifesto e os ativos deste projeto.
-4. Confirmar importação, instalação e seleção via `@` na interface autorizada. Registrar esse resultado separadamente da validação local.
+1. Check the required fields and limits for the target surface. The current display name exceeds 30 characters and fits the package validation limit. Shorten it before a public directory submission.
+2. Check that each path referenced in the manifest exists in the ZIP. Use square icons of at least 48 px. The documented PNG limits are 4,096 px and 5 MiB.
+3. Run `python3 tests/test_plugin_package.py -v` and `python3 tools/package.py --plugin --version 0.1.2` to check the manifest and assets.
+4. Confirm import, installation, and `@` selection in the authorized host. Record that outcome separately from local validation.
 
-O plugin contém apenas uma Skill. Os campos de servidores, aplicativos, credenciais e revisão de MCP se aplicam a pacotes com essas integrações.
+This package contains one Skill. Server, app, credential, and MCP review fields apply to packages with those integrations.
 
-- [Estrutura, compatibilidade e caminhos](https://developers.openai.com/plugins/build/plugins)
-- [Campos de manifesto e requisitos de submissão](https://developers.openai.com/plugins/deploy/submission#manifest-fields)
-- [Erros e limites de validação](https://developers.openai.com/plugins/deploy/submission-errors)
+- [Plugin structure, compatibility, and paths](https://developers.openai.com/plugins/build/plugins)
+- [Manifest fields and submission requirements](https://developers.openai.com/plugins/deploy/submission#manifest-fields)
+- [Validation errors and limits](https://developers.openai.com/plugins/deploy/submission-errors)

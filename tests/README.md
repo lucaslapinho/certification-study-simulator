@@ -1,9 +1,8 @@
-# Avaliação
+# Evaluation
 
-`run_checks.py`: 20 verificações executáveis de estrutura, motor e CLI. Usa fixtures sintéticos; não é avaliação de seleção de Skill pelo host. Dependências: Python 3.10+, jsonschema 4.x, PyYAML 6.x.
+- `run_checks.py` runs 20 structural, engine, and CLI checks with synthetic fixtures. Requirements are Python 3.10+, jsonschema 4.x, and PyYAML 6.x.
+- `test_plugin_package.py` tests the manifest checks and archive contents.
+- `prompts/cases.jsonl` contains 20 behavioral scenarios. Give the agent the prompt, relevant fixture, and Skill. Keep `evaluator/` with the evaluator. Record the output, artifacts, Skill hash, environment and model if known, and evaluation scope. Review `evaluator/rubrics.json` after execution.
+- `evaluator/expected.json` contains independent expected values for the synthetic driver. Track host selection and model behavior separately from the automated engine checks.
 
-`prompts/cases.jsonl`: 20 cenários comportamentais. Entregar ao agente apenas o prompt, a fixture aplicável e a Skill. Não entregar `evaluator/`. Registrar saída, artefatos, hash da Skill, ambiente/modelo quando conhecido e escopo. O avaliador consulta `evaluator/rubrics.json` depois da execução.
-
-`evaluator/expected.json` contém os valores independentes para o driver sintético. Testes de código e catálogo comportamental são camadas diferentes; um PASS no motor não aprova automaticamente o cenário do modelo.
-
-Para regressão: executar os mesmos casos na versão anterior e na candidata; comparar contratos, resultados e falhas. Para esta primeira versão não há baseline anterior. Instalação e importação exigem autorização separada.
+For regression testing, run the same cases on the baseline and candidate and compare contracts, results, and failures. The initial version has no earlier baseline. Installation and import require separate authorization.

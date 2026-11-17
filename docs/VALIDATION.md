@@ -1,14 +1,14 @@
-# Validação do plugin 0.1.2
+# Plugin 0.1.2 validation
 
-| Área | Resultado | Como reproduzir |
+| Area | Result | Reproduce |
 |---|---|---|
-| Skill e motor | 20 testes passaram | `python tests/run_checks.py` |
-| Manifesto e arquivos do plugin | 4 testes passaram | `python tests/test_plugin_package.py -v` |
-| Simulado de referência | 10 questões, 7 acertos com respostas sintéticas | `python tools/demo.py` |
-| Arquivos do ZIP | Manifesto e ícone nas posições declaradas. Os 18 arquivos da Skill são iguais aos da versão 0.1.0. | `python tools/package.py --plugin --version 0.1.2` |
+| Skill and engine | PASS — 20 automated checks | `python tests/run_checks.py` |
+| Manifest and packaged files | PASS — 4 automated checks | `python tests/test_plugin_package.py -v` |
+| Reference mock exam | PASS — 10 questions, 7 correct with synthetic responses | `python tools/demo.py` |
+| ZIP layout | PASS — Manifest and icon at the declared paths, with all 18 Skill files matching Skill 0.1.0 | `python tools/package.py --plugin --version 0.1.2` |
 
-Os testes de empacotamento rejeitam `interface.longDescription` ausente, vazia ou formada só por espaços. Também cobrem metadados de desenvolvedor e referências de ícone que não apontam para um arquivo do pacote.
+Packaging tests reject missing, empty, or whitespace-only `interface.longDescription` values. They also cover developer metadata and icon references that point outside the package or to missing files.
 
-Os testes do motor cobrem cálculo da pontuação, ocultação do gabarito até a entrega, questões contestadas, recomendações e exportação. Ao executar o teste e a demonstração, consulte os resultados gerados em `evidence/`.
+Engine checks cover scoring, withholding the answer key until submission, challenged items, recommendations, and exports. The tests and demo write their results to `evidence/`.
 
-A validação automatizada roda localmente. A confirmação do upload, da instalação e da seleção via `@` depende da interface e da conta ChatGPT. O banco AWS CLF-C02 é uma amostra datada com dez questões e cobertura parcial. A pontuação do simulado é diagnóstica.
+These results cover local checks. Upload, installation, and `@` selection depend on the ChatGPT interface and account. English-language conversation is requested at the prompt level and is outside the coverage of the automated suite. The AWS CLF-C02 demo bank is a dated sample of ten questions with partial exam coverage. Mock scores are diagnostic.
